@@ -20,9 +20,10 @@ return new class extends Migration
             $table->id();
 
             //aziendd,stazione di partenza, sta di arrivo, orario partenza, orario arrivo, codice treno, n carrozze, in orario(Boolean), cancellato
-            $table->string('company');
-            $table->string('departure_station');
-            $table->string('arrival_station');
+            $table->string('company', 50);
+            $table->string('departure_station', 50);
+            $table->string('arrival_station', 50);
+            $table->date('date');
             $table->time('departure_time');
             $table->time('arrival_time');
             $table->smallInteger('code')->unique();

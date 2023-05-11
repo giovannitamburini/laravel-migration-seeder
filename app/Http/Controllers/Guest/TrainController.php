@@ -15,7 +15,6 @@ class TrainController extends Controller
         // devo prendere i dati dalla tabella del database db_train
         $trains = Train::all();
 
-
-        return view('home');
+        return view('home', compact('trains'));
     }
 }
