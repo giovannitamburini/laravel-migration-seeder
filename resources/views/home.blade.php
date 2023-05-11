@@ -2,35 +2,77 @@
 
 @section('content')
 
-<ul>
-    @foreach ($trains as $singleTrain)
-    
-    <li class="d-flex no-wrap gap-2">
-        <div>{{$singleTrain->company}}</div>
-        <div>{{$singleTrain->departure_station}}</div>
-        <div>{{$singleTrain->arrival_station}}</div>
-        <div>{{$singleTrain->date}}</div>
-        <div>{{$singleTrain->departure_time}}</div>
-        <div>{{$singleTrain->arrival_time}}</div>
-        <div>{{$singleTrain->code}}</div>
-        <div>{{$singleTrain->number_coaches}}</div>
-        <div>
-        @if ($singleTrain->on_time == 1)
-              Yes
-        @else
-                No
-        @endif
-        </div>
-        <div>
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Company</th>
+        <th scope="col">Departure Station</th>
+        <th scope="col">Arrival Station</th>
+        <th scope="col">Date</th>
+        <th scope="col">Departure Time</th>
+        <th scope="col">Arrival Time</th>
+        <th scope="col">Code</th>
+        <th scope="col">Number of Coaches</th>
+        <th scope="col">On Time</th>
+        <th scope="col">Cancelled</th>
+      </tr>
+    </thead>
+    <tbody>
+    @foreach ($filteredTrains as $singleTrain)
+
+      <tr>
+        <td>
+        {{$singleTrain->company}}
+
+        </td>
+        <td>
+            {{$singleTrain->departure_station}}
+
+        </td>
+        <td>
+            {{$singleTrain->arrival_station}}
+
+        </td>
+        <td>
+            {{$singleTrain->date}}
+
+        </td>
+        <td>
+            {{$singleTrain->departure_time}}
+
+        </td>
+        <td>
+            {{$singleTrain->arrival_time}}
+
+        </td>
+        <td>
+            {{$singleTrain->code}}
+
+        </td>
+        <td>
+            {{$singleTrain->number_coaches}}
+
+        </td>
+        <td>
+            @if ($singleTrain->on_time == 1)
+            Yes
+      @else
+              No
+      @endif
+        </td>
+        <td>
             @if ($singleTrain->cancelled == 1)
                 Cancelled
             @else
                 No
             @endif
-        </div>
-    </li>
-    
+        
+        </td>
+
+      </tr>
     @endforeach
-</ul>
+
+    </tbody>
+  </table>
     
 @endsection

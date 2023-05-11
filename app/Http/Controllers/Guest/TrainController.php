@@ -15,6 +15,8 @@ class TrainController extends Controller
         // devo prendere i dati dalla tabella del database db_train
         $trains = Train::all();
 
-        return view('home', compact('trains'));
+        $filteredTrains = $trains->where('date', '=', now()->format('Y-m-d'));
+
+        return view('home', compact('filteredTrains'));
     }
 }
