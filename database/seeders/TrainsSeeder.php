@@ -79,20 +79,20 @@ class TrainsSeeder extends Seeder
 
         // dd($faker->name());
 
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
 
             $train = new Train();
 
-            $train->company = $faker->words(2, true);
+            $train->company = $faker->word();
             $train->departure_station = $faker->city();
             $train->arrival_station = $faker->city();
             $train->date = $faker->date();
             $train->departure_time = $faker->time();
             $train->arrival_time = $faker->time();
             $train->code = $faker->randomNumber(4, true);
-            $train->number_coaches = $faker->numberBetween(5, 15);
-            $train->on_time = $faker->boolean(0);
-            $train->cancelled = $faker->boolean(0);
+            $train->number_coaches = $faker->numberBetween(5, 10);
+            $train->on_time = $faker->boolean();
+            $train->cancelled = $faker->boolean();
 
             $train->save();
         }

@@ -29,7 +29,7 @@ return new class extends Migration
             $table->smallInteger('code')->unique();
             $table->tinyInteger('number_coaches')->nullable();
             $table->boolean('on_time')->nullable();
-            $table->boolean('cancelled')->nullable(false);
+            $table->boolean('cancelled')->nullable();
 
             // questa espressione genera in automatico due colonne: -quando è creata una riga(created_at); -quando viene modificata la riga(updated_at)
             $table->timestamps();

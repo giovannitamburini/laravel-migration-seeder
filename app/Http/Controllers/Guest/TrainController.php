@@ -13,9 +13,10 @@ class TrainController extends Controller
     public function index()
     {
         // devo prendere i dati dalla tabella del database db_train
-        $trains = Train::all();
+        // $trains = Train::all();
+        $filteredTrains = Train::all();
 
-        $filteredTrains = $trains->where('date', '=', now()->format('Y-m-d'));
+        // $filteredTrains = $trains->where('date', '=', now()->format('Y-m-d'));
 
         // metodo ottimizzato
         // $train = Train::where('date', '=', now())->get();
