@@ -17,6 +17,9 @@ class TrainController extends Controller
 
         $filteredTrains = $trains->where('date', '=', now()->format('Y-m-d'));
 
+        // metodo ottimizzato
+        // $train = Train::where('date', '=', now())->get();
+
         return view('home', compact('filteredTrains'));
     }
 }
