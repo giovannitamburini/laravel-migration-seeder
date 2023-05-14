@@ -79,22 +79,59 @@ class TrainsSeeder extends Seeder
 
         // dd($faker->name());
 
-        for ($i = 0; $i < 10; $i++) {
+
+
+
+
+        // for ($i = 0; $i < 10; $i++) {
+
+        //     $train = new Train();
+
+        //     $train->company = $faker->word();
+        //     $train->departure_station = $faker->city();
+        //     $train->arrival_station = $faker->city();
+        //     $train->date = $faker->date();
+        //     $train->departure_time = $faker->time();
+        //     $train->arrival_time = $faker->time();
+        //     $train->code = $faker->randomNumber(4, true);
+        //     $train->number_coaches = $faker->numberBetween(5, 10);
+        //     $train->on_time = $faker->boolean();
+        //     $train->cancelled = $faker->boolean();
+
+        //     // $train->save();
+        // }
+
+
+        // BONUS
+        // devo aprire il file CSV
+        // sintassi per aprire un file in modalità lettura ('r')
+        $trainFile = fopen(__DIR__ . '/../trains.csv', 'r');
+
+
+        // per leggere un file csv cè una funzione apposita
+        $trainCSV = fgetcsv($trainFile);
+
+        $trainCSV = fgetcsv($trainFile);
+
+        // dd($trainCSV);
+
+        while ($trainCSV != false) {
 
             $train = new Train();
 
-            $train->company = $faker->word();
-            $train->departure_station = $faker->city();
-            $train->arrival_station = $faker->city();
-            $train->date = $faker->date();
-            $train->departure_time = $faker->time();
-            $train->arrival_time = $faker->time();
-            $train->code = $faker->randomNumber(4, true);
-            $train->number_coaches = $faker->numberBetween(5, 10);
-            $train->on_time = $faker->boolean();
-            $train->cancelled = $faker->boolean();
+            $train->company = $trainCSV[0];
+            $train->departure_station = $trainCSV[1];
+            $train->arrival_station = $trainCSV[2];
+            $train->departure_time = $trainCSV[3];
+            $train->arrival_time = $trainCSV[4];
+            $train->code = $trainCSV[5];
+            $train->number_coaches = $trainCSV[6];
+            $train->on_time = $trainCSV[7];
+            $train->cancelled = $trainCSV[8];
 
             $train->save();
+
+            $trainCSV = fgetcsv($trainFile);
         }
     }
 }
